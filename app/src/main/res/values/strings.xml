@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FridgeKun</string>
+    <string name="facebook_app_id">726144660906372</string>
+    <string name="fb_login_protocol_scheme">fb726144660906372</string>
 </resources>
