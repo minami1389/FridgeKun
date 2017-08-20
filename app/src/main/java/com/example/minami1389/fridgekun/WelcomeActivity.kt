@@ -1,5 +1,6 @@
 package com.example.minami1389.fridgekun
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -27,9 +28,16 @@ import com.google.firebase.auth.FacebookAuthProvider
 
 
 class WelcomeActivity : AppCompatActivity() {
+    companion object Factory {
+        val USER_NAME_EXTRA = "com.example.minami1389.fridgekun.USER_NAME_EXTRA"
+        val USER_PHOTO_URL_EXTRA = "com.example.minami1389.fridgekun.USER_PHOTO_URL_EXTRA"
+    }
+
     var callbackManager = CallbackManager.Factory.create()
     var auth = FirebaseAuth.getInstance()
     var authListener: FirebaseAuth.AuthStateListener? = null
+
+    var progressDialog : ProgressDialog? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,12 +61,15 @@ class WelcomeActivity : AppCompatActivity() {
         })
 
         authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+            progressDialog?.dismiss()
             val user = firebaseAuth.currentUser
             if (user != null) {
                 // User is signed in
-                var welcomeTextView = findViewById(R.id.welcomeTextView) as TextView
-                welcomeTextView.text = user.displayName
-                Log.d("WelcomeActivity", "onAuthStateChanged:signed_in:" + user.photoUrl)
+                val intent = Intent(this, SelectTeamActivity::class.java)
+                intent.putExtra(USER_NAME_EXTRA, user.displayName)
+                intent.putExtra(USER_PHOTO_URL_EXTRA, user.photoUrl.toString())
+                startActivity(intent)
+                Log.d("WelcomeActivity", "onAuthStateChanged:signed_in")
             } else {
                 // User is signed out
                 Log.d("WelcomeActivity", "onAuthStateChanged:signed_out")
@@ -86,8 +97,12 @@ class WelcomeActivity : AppCompatActivity() {
     private fun handleFacebookAccessToken(token: AccessToken) {
         Log.d("WelcomeActivity", "handleFacebookAccessToken:" + token);
 
+        progressDialog = ProgressDialog(this)
+        progressDialog?.setTitle("Loading")
+        progressDialog?.show()
+
         val credential = FacebookAuthProvider.getCredential(token.token)
-        auth.signInWithCredential(credential).addOnCompleteListener(this, object: OnCompleteListener<AuthResult> {
+        auth.signInWithCredential(credential).addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
             override public fun onComplete(task: Task<AuthResult>) {
                 Log.d("WelcomeActivity", "signInWithCredential:onComplete:" + task.isSuccessful)
 
