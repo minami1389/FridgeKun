@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="ふりっじくんと冷蔵庫を管理しよう！"
+            android:text="@string/welcome"
             android:textAlignment="center"
             android:textSize="20sp" />
 

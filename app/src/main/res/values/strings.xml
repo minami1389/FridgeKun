@@ -2,4 +2,12 @@
     <string name="app_name">FridgeKun</string>
     <string name="facebook_app_id">726144660906372</string>
     <string name="fb_login_protocol_scheme">fb726144660906372</string>
+
+    <string name="welcome">ふりっじくんと冷蔵庫を管理しよう！</string>
+    <string name="team_name">チーム名を入力してください</string>
+    <string name="create_team">新しいチームを作る</string>
+    <string name="join_team">既存チームに加わる</string>
+    <string name="logout">ログアウト</string>
+
+
 </resources>

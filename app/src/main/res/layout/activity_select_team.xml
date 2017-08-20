@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.minami1389.fridgekun.SelectTeamActivity">
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,8 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="64dp"
-            android:text="hogehogeさんこんにちは" />
+            android:layout_marginTop="64dp" />
 
         <TextView
             android:id="@+id/teamNameTextView"
@@ -26,7 +24,7 @@
             android:layout_below="@+id/userNameTextView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
-            android:text="ふりっじさんの名前を入力してください" />
+            android:text="@string/team_name" />
 
         <EditText
             android:id="@+id/selectTeamEditText"
@@ -43,24 +41,24 @@
             android:layout_below="@id/selectTeamEditText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
-            android:text="新しいふりっじくんを作る" />
+            android:text="@string/create_team" />
 
         <Button
-            android:id="@+id/findTeamButton"
+            android:id="@+id/joinTeamButton"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/createTeamButton"
             android:layout_centerHorizontal="true"
-            android:text="ふりっじくんを探す" />
+            android:text="@string/join_team" />
 
         <Button
             android:id="@+id/logoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/findTeamButton"
+            android:layout_below="@id/joinTeamButton"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
-            android:text="ログアウト" />
+            android:text="@string/logout" />
 
     </RelativeLayout>
 
