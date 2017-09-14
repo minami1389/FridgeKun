@@ -1,19 +1,25 @@
 package com.example.minami1389.fridgekun
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
-import org.w3c.dom.Text
 import android.content.Intent
+import android.util.Log
+import android.view.View
 import com.facebook.login.LoginManager
+import com.google.android.gms.common.ErrorDialogFragment
 import com.google.firebase.database.FirebaseDatabase
+import android.content.DialogInterface
 
 
-class SelectTeamActivity : AppCompatActivity() {
 
-    val database = FirebaseDatabase.getInstance().getReference()
 
+class SelectFridgeActivity : AppCompatActivity() {
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_team)
@@ -40,14 +46,32 @@ class SelectTeamActivity : AppCompatActivity() {
 
         val createTeamButton = findViewById(R.id.createTeamButton)
         createTeamButton.setOnClickListener {
-            val teamName = (findViewById(R.id.selectTeamEditText) as TextView).text.toString()
-            Team(teamName).writeNewTeam(intent.getStringExtra(WelcomeActivity.USER_UID_EXTRA))
+            val fridgeName = (findViewById(R.id.selectFridgeEditText) as TextView).text.toString()
+            var uid = intent.getStringExtra(WelcomeActivity.USER_UID_EXTRA)
+            Fridge(fridgeName, uid, "").writeNewFridge()
         }
 
         val joinTeamButton = findViewById(R.id.joinTeamButton)
         joinTeamButton.setOnClickListener {
-            val teamName = (findViewById(R.id.selectTeamEditText) as TextView).text.toString()
-            Team().addUser(teamName, intent.getStringExtra(WelcomeActivity.USER_UID_EXTRA))
+            val fridgeName = (findViewById(R.id.selectFridgeEditText) as TextView).text.toString()
+            Fridge().fetchFridge(fridgeName, { fridge ->
+                if (fridge != null) {
+
+                } else {
+                    CustomDialogFragment().show(fragmentManager, "fridgeNotExist")
+                 }
+            })
         }
+    }
+}
+
+class CustomDialogFragment : DialogFragment() {
+    override fun onCreateDialog(savedInstanceState: Bundle): Dialog {
+        val builder = AlertDialog.Builder(activity)
+        builder.setMessage("この名前のFridgeは存在しません")
+                .setPositiveButton("はい", DialogInterface.OnClickListener { dialog, id ->
+                    // FIRE ZE MISSILES!
+                })
+        return builder.create()
     }
 }

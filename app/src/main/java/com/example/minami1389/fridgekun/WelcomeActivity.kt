@@ -1,24 +1,13 @@
 package com.example.minami1389.fridgekun
 
 import android.app.ProgressDialog
-import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
-import android.view.ViewGroup
-import android.view.LayoutInflater
-import android.view.View
-import com.facebook.login.LoginManager
 import android.content.Intent
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import android.support.annotation.NonNull
-import android.support.v4.app.FragmentActivity
-import android.util.AttributeSet
-import android.widget.TextView
 import android.widget.Toast
 import com.facebook.*
 import com.google.android.gms.tasks.OnCompleteListener
@@ -67,7 +56,7 @@ class WelcomeActivity : AppCompatActivity() {
             if (user != null) {
                 // User is signed in
                 User(user.uid, user.displayName, user.photoUrl?.toString()).writeNewUser()
-                val intent = Intent(this, SelectTeamActivity::class.java)
+                val intent = Intent(this, SelectFridgeActivity::class.java)
                 intent.putExtra(USER_NAME_EXTRA, user.displayName)
                 intent.putExtra(USER_PHOTO_URL_EXTRA, user.photoUrl.toString())
                 intent.putExtra(USER_UID_EXTRA, user.uid)

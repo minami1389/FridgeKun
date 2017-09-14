@@ -9,6 +9,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 class User() {
+    val mDatabase = FirebaseDatabase.getInstance().getReference("/user")
     var uid = ""
     var name: String? = ""
     var photoUrl: String? = ""
@@ -20,9 +21,8 @@ class User() {
     }
 
     fun writeNewUser() {
-        val mDatabase = FirebaseDatabase.getInstance().getReference()
         val value = hashMapOf<String?, String?>("name" to this.name, "photoUrl" to this.photoUrl)
-        mDatabase.child("user").child(uid).setValue(value)
+        mDatabase.child(uid).setValue(value)
     }
 
 
