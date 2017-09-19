@@ -3,11 +3,18 @@
     <string name="facebook_app_id">726144660906372</string>
     <string name="fb_login_protocol_scheme">fb726144660906372</string>
 
-    <string name="welcome">ふりっじくんと冷蔵庫を管理しよう！</string>
-    <string name="team_name">チーム名を入力してください</string>
-    <string name="create_team">新しいチームを作る</string>
-    <string name="join_team">既存チームに加わる</string>
+    <!-- select fridge -->
+    <string name="welcome">Welcome to FridgeKun!!</string>
+    <string name="tell_fridge_name">Fridgeの名前を教えてください</string>
+    <string name="create_team">新しく作る</string>
+    <string name="call">呼び出す</string>
     <string name="logout">ログアウト</string>
+    <string name="not_find_fridge">その名前のFridgeは見つかりませんでした</string>
 
+    <!-- create fridge -->
+    <string name="name">名前</string>
+    <string name="password">パスワード</string>
+    <string name="create_fridge">新しい Fridge を作る</string>
+    <string name="exist_fridge">その名前のFridgeはすでにいます</string>
 
 </resources>

@@ -38,7 +38,9 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".SelectFridgeActivity"></activity>
+        <activity android:name=".SelectFridgeActivity" />
+        <activity android:name=".CreateFridgeActivity" />
+        <activity android:name=".FridgeActivity"></activity>
     </application>
 
 </manifest>

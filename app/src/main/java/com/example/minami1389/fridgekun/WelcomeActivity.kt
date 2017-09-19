@@ -17,11 +17,6 @@ import com.google.firebase.auth.FacebookAuthProvider
 
 
 class WelcomeActivity : AppCompatActivity() {
-    companion object Factory {
-        val USER_NAME_EXTRA = "com.example.minami1389.fridgekun.USER_NAME_EXTRA"
-        val USER_PHOTO_URL_EXTRA = "com.example.minami1389.fridgekun.USER_PHOTO_URL_EXTRA"
-        val USER_UID_EXTRA = "com.example.minami1389.fridgekun.USER_UID_EXTRA"
-    }
 
     var callbackManager = CallbackManager.Factory.create()
     var auth = FirebaseAuth.getInstance()
@@ -57,9 +52,6 @@ class WelcomeActivity : AppCompatActivity() {
                 // User is signed in
                 User(user.uid, user.displayName, user.photoUrl?.toString()).writeNewUser()
                 val intent = Intent(this, SelectFridgeActivity::class.java)
-                intent.putExtra(USER_NAME_EXTRA, user.displayName)
-                intent.putExtra(USER_PHOTO_URL_EXTRA, user.photoUrl.toString())
-                intent.putExtra(USER_UID_EXTRA, user.uid)
                 startActivity(intent)
                 Log.d("WelcomeActivity", "onAuthStateChanged:signed_in")
             } else {

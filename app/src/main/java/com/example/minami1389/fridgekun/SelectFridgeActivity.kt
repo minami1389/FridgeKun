@@ -1,34 +1,24 @@
 package com.example.minami1389.fridgekun
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import com.facebook.login.LoginManager
-import com.google.android.gms.common.ErrorDialogFragment
-import com.google.firebase.database.FirebaseDatabase
-import android.content.DialogInterface
-
-
-
 
 class SelectFridgeActivity : AppCompatActivity() {
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_team)
 
         var userNameTextView = findViewById(R.id.userNameTextView) as TextView
-        val userName = intent.getStringExtra(WelcomeActivity.USER_NAME_EXTRA)
+        val userName = FirebaseAuth.getInstance().currentUser?.displayName
         userNameTextView.text = userName + "さんこんにちは"
 
-        //var userPhotoUrl = intent.getStringArrayExtra(WelcomeActivity.USER_PHOTO_URL_EXTRA)
+        findViewById(R.id.notFindfridgeTextView).visibility = View.INVISIBLE
 
         setOnClickListener()
     }
@@ -46,9 +36,8 @@ class SelectFridgeActivity : AppCompatActivity() {
 
         val createTeamButton = findViewById(R.id.createTeamButton)
         createTeamButton.setOnClickListener {
-            val fridgeName = (findViewById(R.id.selectFridgeEditText) as TextView).text.toString()
-            var uid = intent.getStringExtra(WelcomeActivity.USER_UID_EXTRA)
-            Fridge(fridgeName, uid, "").writeNewFridge()
+            val intent = Intent(this, CreateFridgeActivity::class.java)
+            startActivity(intent)
         }
 
         val joinTeamButton = findViewById(R.id.joinTeamButton)
@@ -56,22 +45,14 @@ class SelectFridgeActivity : AppCompatActivity() {
             val fridgeName = (findViewById(R.id.selectFridgeEditText) as TextView).text.toString()
             Fridge().fetchFridge(fridgeName, { fridge ->
                 if (fridge != null) {
-
+                    findViewById(R.id.notFindfridgeTextView).visibility = View.INVISIBLE
+                    val intent = Intent(this, FridgeActivity::class.java)
+                    intent.putExtra(FridgeActivity.FRIDGE_NAME_EXTRA, fridgeName)
+                    startActivity(intent)
                 } else {
-                    CustomDialogFragment().show(fragmentManager, "fridgeNotExist")
-                 }
+                    findViewById(R.id.notFindfridgeTextView).visibility = View.VISIBLE
+                }
             })
         }
-    }
-}
-
-class CustomDialogFragment : DialogFragment() {
-    override fun onCreateDialog(savedInstanceState: Bundle): Dialog {
-        val builder = AlertDialog.Builder(activity)
-        builder.setMessage("この名前のFridgeは存在しません")
-                .setPositiveButton("はい", DialogInterface.OnClickListener { dialog, id ->
-                    // FIRE ZE MISSILES!
-                })
-        return builder.create()
     }
 }
