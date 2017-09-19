@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="32dp"
+    tools:context="com.example.minami1389.fridgekun.CreateFridgeActivity">
+
+    <TextView
+        android:id="@+id/fridgeNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/name"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@+id/fridgeNameEditText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fridgePasswordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/password"
+        app:layout_constraintLeft_toLeftOf="@+id/fridgeNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/fridgeNameEditText" />
+
+    <Button
+        android:id="@+id/createFridgeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/create_fridge"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fridgePasswordEditText" />
+
+    <EditText
+        android:id="@+id/fridgeNameEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fridgeNameTextView" />
+
+    <EditText
+        android:id="@+id/fridgePasswordEditText"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="textPassword"
+        app:layout_constraintLeft_toLeftOf="@+id/fridgeNameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/fridgePasswordTextView" />
+
+    <TextView
+        android:id="@+id/existFridgeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/exist_fridge"
+        android:textColor="@android:color/holo_red_light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createFridgeButton" />
+
+</android.support.constraint.ConstraintLayout>
