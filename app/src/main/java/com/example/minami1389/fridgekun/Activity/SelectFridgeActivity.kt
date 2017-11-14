@@ -1,4 +1,4 @@
-package com.example.minami1389.fridgekun
+package com.example.minami1389.fridgekun.Activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
 import android.view.View
+import com.example.minami1389.fridgekun.Model.Fridge
+import com.example.minami1389.fridgekun.R
 import com.facebook.login.LoginManager
 
 class SelectFridgeActivity : AppCompatActivity() {

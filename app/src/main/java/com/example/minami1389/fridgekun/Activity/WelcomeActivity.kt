@@ -1,4 +1,4 @@
-package com.example.minami1389.fridgekun
+package com.example.minami1389.fridgekun.Activity
 
 import android.app.ProgressDialog
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +9,8 @@ import com.facebook.login.widget.LoginButton
 import android.content.Intent
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast
+import com.example.minami1389.fridgekun.Model.User
+import com.example.minami1389.fridgekun.R
 import com.facebook.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task

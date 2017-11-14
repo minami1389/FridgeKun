@@ -1,8 +1,7 @@
-package com.example.minami1389.fridgekun
+package com.example.minami1389.fridgekun.Model
 
 import android.util.Log
 import com.google.firebase.database.*
-import javax.security.auth.callback.Callback
 
 /**
  * Created by minami1389 on 2017/09/07.
