@@ -26,7 +26,7 @@ class Fridge() {
     }
 
     fun fetchFridge(name: String, onSuccess: (result: Fridge?)->Unit) {
-        mDatabase.child(name).addValueEventListener(object: ValueEventListener {
+        mDatabase.child(name).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.hasChild("founderUid") && dataSnapshot.hasChild("password")) {
                     val founderUid = dataSnapshot.child("founderUid").value.toString()

@@ -18,23 +18,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/itemOwnerEditText"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginTop="16dp"
-        android:hint="持ち主"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemNameEditText" />
-
-    <EditText
         android:id="@+id/itemExpiredEditText"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="46dp"
         android:layout_marginTop="16dp"
         android:hint="賞味期限"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemOwnerEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/itemNameEditText"
+        android:focusable="false"/>
+
+    <Button
+        android:id="@+id/decideItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="追加"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemExpiredEditText" />
+
 
 </android.support.constraint.ConstraintLayout>
