@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ececec"
     android:padding="16dp"
-    tools:context="com.example.minami1389.fridgekun.Fragment.AddItemFragment">
+    tools:context="com.example.minami1389.fridgekun.fragment.AddItemFragment">
 
     <EditText
         android:id="@+id/itemNameEditText"

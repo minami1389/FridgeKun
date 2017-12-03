@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context="com.example.minami1389.fridgekun.Activity.SelectFridgeActivity">
+    tools:context="com.example.minami1389.fridgekun.activity.SelectFridgeActivity">
 
 
     <TextView

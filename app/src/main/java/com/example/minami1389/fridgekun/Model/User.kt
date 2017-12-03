@@ -1,4 +1,4 @@
-package com.example.minami1389.fridgekun.Model
+package com.example.minami1389.fridgekun.model
 
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.IgnoreExtraProperties

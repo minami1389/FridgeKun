@@ -1,12 +1,12 @@
-package com.example.minami1389.fridgekun.Activity
+package com.example.minami1389.fridgekun.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
-import com.example.minami1389.fridgekun.Model.Fridge
 import com.example.minami1389.fridgekun.R
+import com.example.minami1389.fridgekun.model.Fridge
 import com.google.firebase.auth.FirebaseAuth
 
 

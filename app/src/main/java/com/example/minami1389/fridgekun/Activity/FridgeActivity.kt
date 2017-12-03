@@ -1,10 +1,10 @@
-package com.example.minami1389.fridgekun.Activity
+package com.example.minami1389.fridgekun.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
-import com.example.minami1389.fridgekun.Fragment.AddItemFragment
-import com.example.minami1389.fridgekun.Model.Item
+import com.example.minami1389.fridgekun.fragment.AddItemFragment
+import com.example.minami1389.fridgekun.model.Item
 import com.example.minami1389.fridgekun.R
 
 class FridgeActivity : AppCompatActivity() {

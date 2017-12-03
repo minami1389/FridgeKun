@@ -1,4 +1,4 @@
-package com.example.minami1389.fridgekun.Model
+package com.example.minami1389.fridgekun.model
 
 import android.util.Log
 import com.google.firebase.database.*

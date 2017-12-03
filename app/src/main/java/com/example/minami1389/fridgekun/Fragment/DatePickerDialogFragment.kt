@@ -1,4 +1,4 @@
-package com.example.minami1389.fridgekun.Fragment
+package com.example.minami1389.fridgekun.fragment
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -23,17 +23,10 @@ class DatePickerDialogFragment : DialogFragment(), DatePickerDialog.OnDateSetLis
         val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
         return DatePickerDialog(getActivity(), this, year, month, dayOfMonth)
-
-//        return super.onCreateDialog(savedInstanceState)
     }
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
         onDateSetCallback?.invoke(year, month, day)
     }
-
-//    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        val content = inflater?.inflate(R.layout.fragment_date_picker_dialog, null)
-//        return content
-//    }
 
 }

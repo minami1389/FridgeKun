@@ -1,4 +1,4 @@
-package com.example.minami1389.fridgekun.Fragment
+package com.example.minami1389.fridgekun.fragment
 
 
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import com.example.minami1389.fridgekun.Activity.FridgeActivity
-import com.example.minami1389.fridgekun.Model.Item
+import com.example.minami1389.fridgekun.activity.FridgeActivity
+import com.example.minami1389.fridgekun.model.Item
 import com.example.minami1389.fridgekun.R
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
