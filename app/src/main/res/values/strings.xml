@@ -4,12 +4,13 @@
     <string name="fb_login_protocol_scheme">fb726144660906372</string>
 
     <!-- select fridge -->
-    <string name="welcome">Welcome to FridgeKun!!</string>
+    <string name="welcome">冷蔵庫をコミュニケーションの場に！</string>
     <string name="tell_fridge_name">Fridgeの名前を教えてください</string>
     <string name="create_team">新しく作る</string>
     <string name="call">呼び出す</string>
     <string name="logout">ログアウト</string>
     <string name="not_find_fridge">その名前のFridgeは見つかりませんでした</string>
+    <string name="loding">ログイン処理中です...</string>
 
     <!-- create fridge -->
     <string name="name">名前</string>
