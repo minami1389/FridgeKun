@@ -4,37 +4,48 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.minami1389.fridgekun.R
 import com.example.minami1389.fridgekun.model.User
 import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_welcome.*
 
-/**
- * Created by minami.baba on 2018/01/23.
- */
 
-class LoginActivity : AppCompatActivity() {
+class WelcomeActivity : AppCompatActivity() {
+
+    var callbackManager = CallbackManager.Factory.create()
     var auth = FirebaseAuth.getInstance()
     var authListener: FirebaseAuth.AuthStateListener? = null
-    var token: AccessToken? = null
-
-    val keyToken = "KEY_TOKEN"
-    fun createIntent(token: AccessToken): Intent {
-        var intent = Intent(this, LoginActivity::class.java)
-        intent.putExtra(keyToken, token)
-        return intent
-    }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_welcome)
 
-        token = intent.getParcelableExtra(keyToken)
+        var loginButton = findViewById<View>(R.id.loginButton) as LoginButton
+        loginButton.setReadPermissions("email", "public_profile")
+        loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                Log.d("WelcomeActivity", "facebook:onSuccess:" + loginResult)
+                handleFacebookLogin(loginResult.accessToken)
+            }
+            override fun onCancel() {
+                Log.d("WelcomeActivity", "facebook:onCancel")
+            }
+            override fun onError(exception: FacebookException) {
+                Log.d("WelcomeActivity", "facebook:onError", exception)
+            }
+        })
 
         authListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
@@ -51,6 +62,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        super.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+    }
+
     public override fun onStart() {
         super.onStart()
         auth.addAuthStateListener(authListener as FirebaseAuth.AuthStateListener)
@@ -63,15 +79,18 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        val credential = FacebookAuthProvider.getCredential(token?.token!!)
+    fun handleFacebookLogin(token: AccessToken) {
+        welcomeTextView.text = "ログイン中..."
+        loginButton.visibility = View.INVISIBLE
+
+        val credential = FacebookAuthProvider.getCredential(token.token)
         auth.signInWithCredential(credential).addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
             override fun onComplete(task: Task<AuthResult>) {
                 Log.d("WelcomeActivity", "signInWithCredential:onComplete:" + task.isSuccessful)
+                startActivity(Intent(this@WelcomeActivity, SelectFridgeActivity::class.java))
                 if (!task.isSuccessful) {
                     Log.w("WelcomeActivity", "signInWithCredential", task.getException())
-                    Toast.makeText(this@LoginActivity, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@WelcomeActivity, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
         })

@@ -23,6 +23,8 @@ class SelectFridgeActivity : AppCompatActivity() {
         findViewById<View>(R.id.notFindfridgeTextView).visibility = View.INVISIBLE
 
         setOnClickListener()
+
+        title = "FridgeKunを呼ぼう"
     }
 
     fun setOnClickListener() {
