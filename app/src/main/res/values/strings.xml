@@ -10,6 +10,7 @@
     <string name="call">呼び出す</string>
     <string name="logout">ログアウト</string>
     <string name="not_find_fridge">その名前のFridgeは見つかりませんでした</string>
+    <string name="loding">ログイン処理中です...</string>
 
     <!-- create fridge -->
     <string name="name">名前</string>
