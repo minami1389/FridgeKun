@@ -34,8 +34,9 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        var loginButton = findViewById<View>(R.id.login_button) as LoginButton
+        var loginButton = findViewById<View>(R.id.loginButton) as LoginButton
         loginButton.setReadPermissions("email", "public_profile")
+        loginButton.height = 50
         loginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 Log.d("WelcomeActivity", "facebook:onSuccess:" + loginResult)
