@@ -79,4 +79,5 @@ class FridgeActivity : AppCompatActivity() {
             Log.w("onCancelled", "error:", error.toException())
         }
     }
+
 }
