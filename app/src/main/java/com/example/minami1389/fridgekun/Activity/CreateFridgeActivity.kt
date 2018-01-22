@@ -16,16 +16,16 @@ class CreateFridgeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_fridge)
 
-        findViewById(R.id.existFridgeTextView).visibility = View.INVISIBLE
+        findViewById<View>(R.id.existFridgeTextView).visibility = View.INVISIBLE
 
-        val createFridgeButton = findViewById(R.id.createFridgeButton)
+        val createFridgeButton = findViewById<View>(R.id.createFridgeButton)
         createFridgeButton.setOnClickListener {
-            val name = (findViewById(R.id.fridgeNameEditText) as TextView).text.toString()
+            val name = (findViewById<View>(R.id.fridgeNameEditText) as TextView).text.toString()
             Fridge().fetchFridge(name, { fridge ->
                 if (fridge != null) {
-                    findViewById(R.id.existFridgeTextView).visibility = View.VISIBLE
+                    findViewById<View>(R.id.existFridgeTextView).visibility = View.VISIBLE
                 } else {
-                    val password = (findViewById(R.id.fridgePasswordEditText) as TextView).text.toString()
+                    val password = (findViewById<View>(R.id.fridgePasswordEditText) as TextView).text.toString()
                     val user = FirebaseAuth.getInstance().currentUser
                     Fridge(name, user?.uid.toString(), password).writeNewFridge()
                     val intent = Intent(this, FridgeActivity::class.java)
